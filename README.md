@@ -18,8 +18,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-
-
 # veltech
 
 This is an web assessment test for veltech Group
@@ -49,33 +47,24 @@ what to serve from backend:
    1. login/sign up (with firebase) and session management(with firebase too)
 3. Logged-in pages
    1. you cannot access this pages if you are not logged in
-      - home
-            - displays a list of all users (get request for users)
-            - tells you how many albums each user has (get request for albums)
-      - User
-            - individual user page, which show when a user is clicked (run a get request for user)
-            - it should display a list of users albums (get request for users album)
-      - Album information page
-            - Album information and its photos
-            - get request for album information and its photos
-      - Photo information page
-            - photo display
-            - user can edit title of photo
-            - put/patch request to backend to save the edited title
+      - home - displays a list of all users (get request for users) - tells you how many albums each user has (get request for albums)
+      - User - individual user page, which show when a user is clicked (run a get request for user) - it should display a list of users albums (get request for users album)
+      - Album information page - Album information and its photos - get request for album information and its photos
+      - Photo information page - photo display - user can edit title of photo - put/patch request to backend to save the edited title
 
-## Software requirements 
+## Software requirements
 
 1. responsive for both mobile, tablet and pc
 2. the application should be able to run with simple commands:
    - How to run this project:
-       - clone the repo
-       - cd into the repo 
-       - npm install (to install dependecies) 
-       - npm run start (visit [local host](http://localhost:3000/) browser)
+     - clone the repo
+     - cd into the repo
+     - npm install (to install dependecies)
+     - npm run start (visit [local host](http://localhost:3000/) browser)
 3. the code should have production and development environments
    - production branches - main
-   - development branches - production 
-4. pages should retain information  after initial loading
+   - development branches - production
+4. pages should retain information after initial loading
 5. nformative commit messages that follow conventional commit messaging formats
 6. Proper documentation of the code
 7. Software unit tests that verify the software’s correctness.
@@ -83,24 +72,25 @@ what to serve from backend:
 9. A pipeline job to automatically deploy the software project once certain checks have been met
 10. Having the application deployed. Use any deployment services with free tiers e.g. heroku, vercel
 
-
 # Good To Have:
+
 1. Linters:
-      -  Javascript / Typescript
-      -  Less/SCSS/CSS
-      -  Commits
+   - Javascript / Typescript
+   - Less/SCSS/CSS
+   - Commits
 2. Loaders to show that data is being fetched
 3. Logging service for application errors$ git push production
-fatal: 'production' does not appear to be a git repository
-fatal: Could not read from remote repository.
+   fatal: 'production' does not appear to be a git repository
+   fatal: Could not read from remote repository.
 
 Please make sure you have the correct access rights
 and the repository exists.
-the@Alchemy:~/Documents/programming/veltech$ 
-4. Use of a UI library for a polished-looking application e.g. Tailwind, Bootstrap, Foundation,Material, Bulma etc
+the@Alchemy:~/Documents/programming/veltech$ 4. Use of a UI library for a polished-looking application e.g. Tailwind, Bootstrap, Foundation,Material, Bulma etc
 
 ## TECHNOLOGY USED:
 
 1. Material UI
 2. ReactJS
 3. Tailwind CSS
+
+design isnpiration for the landing page [design](https://dribbble.com/shots/23437431-Banking-Website-Landing-Page-Design)
