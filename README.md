@@ -90,7 +90,13 @@ what to serve from backend:
       -  Less/SCSS/CSS
       -  Commits
 2. Loaders to show that data is being fetched
-3. Logging service for application errors
+3. Logging service for application errors$ git push production
+fatal: 'production' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+the@Alchemy:~/Documents/programming/veltech$ 
 4. Use of a UI library for a polished-looking application e.g. Tailwind, Bootstrap, Foundation,Material, Bulma etc
 
 ## TECHNOLOGY USED:
