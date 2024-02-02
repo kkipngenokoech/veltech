@@ -17,7 +17,7 @@ export default function LandingPage() {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % heros.length);
-    },30000); //
+    }, 30000); //
     return () => clearInterval(timer); // Clean up on component unmount
   }, []);
 
@@ -25,18 +25,21 @@ export default function LandingPage() {
     setIndex((index + 1) % heros.length);
   }
   return (
-    <div className="bg-hero-pattern bg-cover h-screen flex items-center justify-center relative">
-      <span className="absolute left-5 transform text-lg font-bold text-blue-500  w-1/3 animate-fade-in-out leading-loose">
-        {heros[index]}
-      </span>
-      <Button
-        onClick={handleClick}
-        variant="contained"
-        color="primary"
-        className="text-black hover:text-white"
-      >
-        Hello World
-      </Button>
+    <div>
+      <div className="bg-hero-pattern bg-cover h-screen flex items-center justify-center relative">
+        <span className="absolute left-5 transform text-lg font-bold text-blue-500  w-1/3 animate-fade-in-out leading-loose">
+          {heros[index]}
+        </span>
+        <Button
+          onClick={handleClick}
+          variant="contained"
+          color="primary"
+          className="text-black hover:text-white"
+        >
+          Hello World
+        </Button>
+      </div>
+      <div></div>
     </div>
   );
 }
