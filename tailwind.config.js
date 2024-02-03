@@ -12,10 +12,10 @@ module.exports = {
         "hero-pattern": "url('/images/hero-section.jpg')",
       }),
       colors: {
-        beige: '#efeae7', // Replace with the exact shade of beige you want to use
-        beigeBG: "#c39d99"
+        beige: "#efeae7", // Replace with the exact shade of beige you want to use
+        beigeBG: "#c39d99",
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };
