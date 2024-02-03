@@ -1,6 +1,8 @@
 " use client";
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
+import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 
 export default function LandingPage() {
   const heros = [
@@ -48,9 +50,9 @@ export default function LandingPage() {
 
 //! stats for landing page
 const stats = [
-  { id: 1, name: "Moments shared every 24 hours", value: "100 000" },
-  { id: 2, name: "Countries explored", value: "50" },
-  { id: 3, name: "Total Albums shared", value: "46,000" },
+  { id: 1, name: "Moments shared every 24 hours", value: 100000 },
+  { id: 2, name: "Countries explored", value: 50 },
+  { id: 3, name: "Total Albums shared", value: 46000 },
 ];
 
 function StatsSection() {
@@ -65,7 +67,11 @@ function StatsSection() {
             >
               <dt className="text-base leading-7 text-gray-600">{stat.name}</dt>
               <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-                {stat.value}
+                                <VisibilitySensor partialVisibility offset={{ bottom: 100 }}>
+                  {({ isVisible }) => (
+                    <CountUp start={0} end={isVisible ? stat.value : 0} duration={2.75} />
+                  )}
+                </VisibilitySensor>
               </dd>
             </div>
           ))}
