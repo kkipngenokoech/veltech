@@ -59,7 +59,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="mt-10 text-center text-sm">
-        &copy; {new Date().getFullYear()} Your Company. All rights reserved.
+        &copy; {new Date().getFullYear()} EverydayVisa. All rights reserved.
       </div>
     </footer>
   );
