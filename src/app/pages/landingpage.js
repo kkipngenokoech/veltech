@@ -204,7 +204,6 @@ const posts = [
     },
   },
 
-  // More posts...
 ];
 
 function AboutUsSection() {
