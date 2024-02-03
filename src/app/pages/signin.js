@@ -8,7 +8,6 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -18,7 +17,7 @@ function Copyright(props) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        EverydayVisa
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -28,7 +27,13 @@ function Copyright(props) {
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+    palette: {
+        background: {
+            default: '#efeae7',
+        },
+    }
+});
 
 export default function SignIn() {
   const handleSubmit = (event) => {
@@ -49,7 +54,8 @@ export default function SignIn() {
             marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
+                      alignItems: 'center',
+            
           }}
         >
           <div className="sm:mx-auto sm:w-full sm:max-w-sm flex flex-col items-center">
@@ -60,7 +66,7 @@ export default function SignIn() {
     style={{ width: '200px' }}
   />
   <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-    Sign up for an account
+    Sign in to your  account
   </h2>
 </div>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>

@@ -18,7 +18,7 @@ function Copyright(props) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        EverydayVisa
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -28,7 +28,13 @@ function Copyright(props) {
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+    palette: {
+        background: {
+            default: '#efeae7',
+        },
+    }
+});
 
 export default function SignUp() {
   const handleSubmit = (event) => {
@@ -120,7 +126,7 @@ export default function SignUp() {
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                  label="Sign me up for visual inspiration, exclusive promotions, and EverydayVisa updates!"
                 />
               </Grid>
             </Grid>
