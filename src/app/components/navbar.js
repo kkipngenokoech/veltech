@@ -4,9 +4,9 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 const navigation = [
-  { name: "Featured Albums", href: "#" },
-  { name: "About Us", href: "#" },
-  { name: "Contact", href: "#" },
+  { name: "Wanderers", href: "/wanderers" },
+  { name: "Moments Gallery", href: "#" },
+  { name: "Explore", href: "#" },
 ];
 
 export default function VelTechNavbar() {

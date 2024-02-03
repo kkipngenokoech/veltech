@@ -6,12 +6,9 @@ export default function AuthPage() {
 
   return (
     <div className="">
-
       <SignUp />
     </div>
-
   );
-
 }
 
 function SignIn() {
