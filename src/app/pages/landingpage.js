@@ -3,6 +3,23 @@ import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import CountUp from 'react-countup';
 import VisibilitySensor from 'react-visibility-sensor';
+import AlbumCard from "../components/album";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+
+const albums = [
+    { id: 1, coverImage: '/images/cover-photo.jpg', title: 'Album 1', description: 'Description 1', dateUploaded: 'Date 1', country: 'Country 1' },
+    { id: 1, coverImage: '/images/cover-photo.jpg', title: 'Album 1', description: 'Description 1', dateUploaded: 'Date 1', country: 'Country 1' },
+    { id: 1, coverImage: '/images/cover-photo.jpg', title: 'Album 1', description: 'Description 1', dateUploaded: 'Date 1', country: 'Country 1' },
+    { id: 1, coverImage: '/images/cover-photo.jpg', title: 'Album 1', description: 'Description 1', dateUploaded: 'Date 1', country: 'Country 1' },
+    { id: 1, coverImage: '/images/cover-photo.jpg', title: 'Album 1', description: 'Description 1', dateUploaded: 'Date 1', country: 'Country 1' },
+    { id: 1, coverImage: '/images/cover-photo.jpg', title: 'Album 1', description: 'Description 1', dateUploaded: 'Date 1', country: 'Country 1' },
+    { id: 1, coverImage: '/images/cover-photo.jpg', title: 'Album 1', description: 'Description 1', dateUploaded: 'Date 1', country: 'Country 1' },
+    // Add more albums here...
+  ];
+
+
 
 export default function LandingPage() {
   const heros = [
@@ -23,9 +40,7 @@ export default function LandingPage() {
     return () => clearInterval(timer); // Clean up on component unmount
   }, []);
 
-  function handleClick() {
-    setIndex((index + 1) % heros.length);
-  }
+  
   return (
     <div className="bg-beige">
       <div className="bg-hero-pattern bg-cover h-screen flex items-center justify-center relative">
@@ -33,7 +48,7 @@ export default function LandingPage() {
           {heros[index]}
         </span>{" "}
         <Button
-          onClick={handleClick}
+          
           variant="contained"
           color="primary"
           className="text-black hover:text-white"
@@ -47,11 +62,15 @@ export default function LandingPage() {
           <div>
               <AboutUsSection />
           </div>
+          <div>
+              <FeaturedAlbumsSection albums={albums} /> 
+          </div>
+
     </div>
   );
 }
 
-//! stats for landing page
+//! stats for landing pageExplore the world through EverydayVisa, where we transform daily moments into shared visual stories of adventure and connection.
 const stats = [
   { id: 1, name: "Moments shared every 24 hours", value: 100000 },
   { id: 2, name: "Countries explored", value: 50 },
@@ -191,6 +210,44 @@ function AboutUsSection() {
               </div>
             </article>
           ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
+//! Featured albums section
+
+
+
+function FeaturedAlbumsSection({ albums }) {
+     const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1, 
+    swipe: true,
+    swipeToSlide: true,
+    centerMode: true, // Enable center mode
+    centerPadding: '60px', // Add padding either side of the slides
+  };
+  return (
+    <div className="bg-beige py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:mx-0">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">EverydayVisa Featured Albums</h2>
+          <p className="mt-2 text-lg leading-8 text-gray-600">
+             Explore captivating stories through EverydayVisa's featured albums. Each snapshot is a unique journey, inviting you to discover diverse experiences and celebrate the art of storytelling.
+          </p>
+        </div>
+        <div className="mx-auto mt-10 w-full gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0">
+          <Slider {...settings}>
+            {albums.map((album) => (
+              <AlbumCard key={album.id} album={album} />
+            ))}
+          </Slider>
         </div>
       </div>
     </div>
