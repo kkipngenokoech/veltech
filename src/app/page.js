@@ -4,7 +4,6 @@ import React from "react";
 import VelTechNavbar from "./components/navbar";
 import LandingPage from "./pages/landingpage";
 
-
 function Home() {
   return (
     <div>

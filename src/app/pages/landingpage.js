@@ -27,9 +27,10 @@ export default function LandingPage() {
   return (
     <div>
       <div className="bg-hero-pattern bg-cover h-screen flex items-center justify-center relative">
-<span className="absolute left-5 transform text-lg font-bold text-blue-500 w-full md:w-1/3 animate-fade-in-out leading-loose">
-  {heros[index]}
-</span>        <Button
+        <span className="absolute left-5 transform text-lg font-bold text-blue-500 w-full md:w-1/3 animate-fade-in-out leading-loose">
+          {heros[index]}
+        </span>{" "}
+        <Button
           onClick={handleClick}
           variant="contained"
           color="primary"
@@ -39,7 +40,7 @@ export default function LandingPage() {
         </Button>
       </div>
           <div>
-              
+              <StatsSection />
       </div>
     </div>
   );
@@ -47,10 +48,10 @@ export default function LandingPage() {
 
 //! stats for landing page
 const stats = [
-  { id: 1, name: 'Transactions every 24 hours', value: '44 million' },
-  { id: 2, name: 'Assets under holding', value: '$119 trillion' },
-  { id: 3, name: 'New users annually', value: '46,000' },
-]
+  { id: 1, name: "Moments shared every 24 hours", value: "100 000" },
+  { id: 2, name: "Countries explored", value: "50" },
+  { id: 3, name: "Total Albums shared", value: "46,000" },
+];
 
 function StatsSection() {
   return (
@@ -58,7 +59,10 @@ function StatsSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
           {stats.map((stat) => (
-            <div key={stat.id} className="mx-auto flex max-w-xs flex-col gap-y-4">
+            <div
+              key={stat.id}
+              className="mx-auto flex max-w-xs flex-col gap-y-4"
+            >
               <dt className="text-base leading-7 text-gray-600">{stat.name}</dt>
               <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
                 {stat.value}
@@ -68,5 +72,5 @@ function StatsSection() {
         </dl>
       </div>
     </div>
-  )
+  );
 }
