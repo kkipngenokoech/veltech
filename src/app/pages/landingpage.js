@@ -104,7 +104,8 @@ export default function LandingPage() {
       <div className="bg-beige p-8 py-24 sm:py-32 ">
         <StatsSection />
         <AboutUsSection />
-        <FeaturedAlbumsSection albums={albums} />
+              <FeaturedAlbumsSection albums={albums} />
+        <CallToActionSection />
         <NewsletterSection />
       </div>
     </div>
@@ -193,7 +194,7 @@ const posts = [
       "Hello EverydayVisa Community,Welcome to a space where ordinary moments become extraordinary stories. As the founder, I invite you to share, connect, and celebrate the beauty of your day-to-day adventures. Together, let's turn every snapshot into a cherished memory.\nHappy exploring!",
     date: "Mar 16, 2020",
     datetime: "2020-03-16",
-    category: { title: "Marketing", href: "#" },
+    category: { title: "Our Desk", href: "#" },
     author: {
       name: "Michael Foster",
       role: "Co-Founder / CTO",
@@ -305,6 +306,27 @@ function FeaturedAlbumsSection({ albums }) {
             ))}
           </Slider>
         </div>
+      </div>
+    </div>
+  );
+}
+
+
+//! Call to Action Section
+
+
+function CallToActionSection() {
+  return (
+    <div className="flex flex-col items-center justify-center space-y-4 p-4">
+      <h2 className="text-2xl font-bold">Ready to relive your adventures?</h2>
+      <p className="text-center">Join EverydayVisa and turn your everyday moments into shared stories and cherished memories.</p>
+      <div className="flex space-x-4">
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Sign In
+        </button>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Sign Up
+        </button>
       </div>
     </div>
   );
