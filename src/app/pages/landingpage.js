@@ -104,7 +104,7 @@ export default function LandingPage() {
       <div className="bg-beige p-8 py-24 sm:py-32 ">
         <StatsSection />
         <AboutUsSection />
-              <FeaturedAlbumsSection albums={albums} />
+        <FeaturedAlbumsSection albums={albums} />
         <CallToActionSection />
         <NewsletterSection />
       </div>
@@ -203,7 +203,6 @@ const posts = [
         "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
   },
-
 ];
 
 function AboutUsSection() {
@@ -310,15 +309,16 @@ function FeaturedAlbumsSection({ albums }) {
   );
 }
 
-
 //! Call to Action Section
-
 
 function CallToActionSection() {
   return (
     <div className="flex flex-col items-center justify-center space-y-4 p-4">
       <h2 className="text-2xl font-bold">Ready to relive your adventures?</h2>
-      <p className="text-center">Join EverydayVisa and turn your everyday moments into shared stories and cherished memories.</p>
+      <p className="text-center">
+        Join EverydayVisa and turn your everyday moments into shared stories and
+        cherished memories.
+      </p>
       <div className="flex space-x-4">
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Sign In

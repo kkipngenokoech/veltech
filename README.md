@@ -92,5 +92,4 @@ what to serve from backend:
 
 design isnpiration for the landing page [design](https://dribbble.com/shots/23437431-Banking-Website-Landing-Page-Design)
 
-
 link to deployed site in vercel - [everydayVisa](https://veltech.vercel.app/)
