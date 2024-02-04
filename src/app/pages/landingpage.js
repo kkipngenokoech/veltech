@@ -288,7 +288,7 @@ function FeaturedAlbumsSection({ albums }) {
           </p>
         </div>
         <div className="mx-auto mt-10 w-full gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0">
-          <Album cards={cards}/>
+          <Album cards={cards} />
         </div>
       </div>
     </div>

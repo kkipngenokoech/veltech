@@ -5,8 +5,8 @@ export default function Wanderers() {
     <div className="pt-16">
       <div className="fixed top-0 left-0 w-full z-30">
         <VelTechNavbar />
-          </div>
-          
+      </div>
+
       <ListWanderers />
     </div>
   );
