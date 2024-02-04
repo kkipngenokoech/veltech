@@ -3,32 +3,31 @@ import VelTechNavbar from "@/app/components/navbar";
 import Testimonials from "@/app/components/testimonials";
 
 export default function Wanderers() {
-
-    const testimonials = [
+  const testimonials = [
     {
       id: 1,
       text: "This is a great service. I highly recommend it.",
       name: "John Doe",
-      position: "CEO, Company"
+      position: "CEO, Company",
     },
     {
       id: 2,
       text: "I love using this service. It's easy to use and reliable.",
       name: "Jane Smith",
-      position: "Manager, Company"
+      position: "Manager, Company",
     },
     // Add more testimonials as needed
     {
       id: 1,
       text: "This is a great service. I highly recommend it.",
       name: "John Doe",
-      position: "CEO, Company"
+      position: "CEO, Company",
     },
     {
       id: 2,
       text: "I love using this service. It's easy to use and reliable.",
       name: "Jane Smith",
-      position: "Manager, Company"
+      position: "Manager, Company",
     },
     // Add more testimonials as needed
   ];
@@ -37,9 +36,9 @@ export default function Wanderers() {
       <div className="fixed top-0 left-0 w-full z-30">
         <VelTechNavbar />
       </div>
-          <ListWanderers />
-          <TestimonialSection testimonials={testimonials} />
-          <Footer/>
+      <ListWanderers />
+      <TestimonialSection testimonials={testimonials} />
+      <Footer />
     </div>
   );
 }
@@ -186,11 +185,10 @@ function ListWanderers() {
   );
 }
 
-
 function TestimonialSection({ testimonials }) {
   return (
     <div className="my-8 p-8">
-      <h2 className="text-2xl font-bold mb-4">Testimonials</h2>
+      <h2 className="text-2xl font-bold mb-4">Experiences Echo</h2>
       <div className="flex overflow-x-scroll scrollbar-hide">
         {testimonials.slice(0, 3).map((testimonial) => (
           <Testimonials key={testimonial.id} testimonial={testimonial} />

@@ -13,33 +13,39 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Link from "next/link";
 
 export default function AlbumCard({ card }) {
   return (
-    <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
-      <CardMedia
-        component="div"
-        sx={{
-          // 16:9
-          pt: "56.25%",
-        }}
-        image="https://source.unsplash.com/random?wallpapers"
-      />
-      <CardContent sx={{ flexGrow: 1 }}>
-        <Typography gutterBottom variant="h5" component="h2">
-          Heading
-        </Typography>
-        <Typography>
-          This is a media card. You can use this section to describe the
-          content.
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">View</Button>
-        <Button size="small">Edit</Button>
-      </CardActions>
-    </Card>
+      <Link href="/album" passHref>
+          
+          <Card sx={{ height: "100%", display: "flex", flexDirection: "column", textDecoration: "none" }}
+        
+        
+          >
+        <CardMedia
+          component="div"
+          sx={{
+            
+            pt: "56.25%",
+          }}
+          image="https://source.unsplash.com/random?wallpapers"
+        />
+        <CardContent sx={{ flexGrow: 1 }}>
+          <Typography gutterBottom variant="h5" component="h2">
+            Heading
+          </Typography>
+          <Typography>
+            This is a media card. You can use this section to describe the
+            content.
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small">View</Button>
+          <Button size="small">Edit</Button>
+        </CardActions>
+      </Card>
+    </Link>
   );
 }
