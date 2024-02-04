@@ -104,7 +104,7 @@ export default function LandingPage() {
       <div className="bg-beige p-8 py-24 sm:py-32 ">
         <StatsSection />
         <AboutUsSection />
-              <FeaturedAlbumsSection albums={albums} />
+        <FeaturedAlbumsSection albums={albums} />
         <CallToActionSection />
         <NewsletterSection />
       </div>
@@ -203,8 +203,6 @@ const posts = [
         "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
   },
-
-  // More posts...
 ];
 
 function AboutUsSection() {
@@ -275,17 +273,7 @@ function AboutUsSection() {
 //! Featured albums section
 
 function FeaturedAlbumsSection({ albums }) {
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    swipe: true,
-    swipeToSlide: true,
-    centerMode: true, // Enable center mode
-    centerPadding: "60px", // Add padding either side of the slides
-  };
+  const cards = [1, 2, 3, 4, 5, 6];
   return (
     <div className="bg-beige py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -300,26 +288,23 @@ function FeaturedAlbumsSection({ albums }) {
           </p>
         </div>
         <div className="mx-auto mt-10 w-full gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0">
-          <Slider {...settings}>
-            {albums.map((album) => (
-              <AlbumCard key={album.id} album={album} />
-            ))}
-          </Slider>
+          <Album cards={cards} />
         </div>
       </div>
     </div>
   );
 }
 
-
 //! Call to Action Section
-
 
 function CallToActionSection() {
   return (
     <div className="flex flex-col items-center justify-center space-y-4 p-4">
       <h2 className="text-2xl font-bold">Ready to relive your adventures?</h2>
-      <p className="text-center">Join EverydayVisa and turn your everyday moments into shared stories and cherished memories.</p>
+      <p className="text-center">
+        Join EverydayVisa and turn your everyday moments into shared stories and
+        cherished memories.
+      </p>
       <div className="flex space-x-4">
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Sign In
@@ -335,6 +320,7 @@ function CallToActionSection() {
 //! Newsletter section
 
 import { CalendarDaysIcon, HandRaisedIcon } from "@heroicons/react/24/outline";
+import Album from "../components/album";
 
 function NewsletterSection() {
   return (

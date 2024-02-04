@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 const navigation = [
-  { name: "Featured Albums", href: "#" },
-  { name: "About Us", href: "#" },
-  { name: "Contact", href: "#" },
+  { name: "Wanderers", href: "/wanderers" },
+  { name: "Moments Gallery", href: "/gallery" },
+  { name: "Explore", href: "#" },
 ];
 
 export default function VelTechNavbar() {
@@ -18,8 +19,8 @@ export default function VelTechNavbar() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
+          <a href="/" className="-m-1.5 p-1.5">
+            <span className="sr-only">EverydayVisa</span>
             <img className="h-8 w-auto" src="/images/logo.svg" alt="" />
           </a>
         </div>
@@ -45,13 +46,13 @@ export default function VelTechNavbar() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a
-            href="#"
+          <Link
+            href="/auth"
             className="text-sm font-semibold leading-6 text-gray-900 border border-blue-500 hover:border-blue-700 py-2 px-4 rounded-lg"
           >
             Get Started
-          </a>
-        </div>
+          </Link>
+        </div>{" "}
       </nav>
       <Dialog
         as="div"
@@ -62,13 +63,9 @@ export default function VelTechNavbar() {
         <div className="fixed inset-0 z-50" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
-              />
+            <a href="/" className="-m-1.5 p-1.5">
+              <span className="sr-only">EverydayVisa</span>
+              <img className="h-8 w-auto" src="/images/logo.svg" alt="" />
             </a>
             <button
               type="button"
