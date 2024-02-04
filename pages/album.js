@@ -1,33 +1,36 @@
+import Footer from "@/app/components/footer";
+import VelTechNavbar from "@/app/components/navbar";
+
 const features = [
-  { name: "Origin", description: "Designed by Good Goods, Inc." },
+  { name: "Creator", description: "Owner's name" },
   {
-    name: "Material",
+    name: "Date Uploaded",
     description:
-      "Solid walnut base with rare earth magnets and powder coated steel card cover",
+      "Date Uploaded",
   },
-  { name: "Dimensions", description: '6.25" x 3.55" x 1.15"' },
-  { name: "Finish", description: "Hand sanded and finished with natural oil" },
-  { name: "Includes", description: "Wood card tray and 3 refill packs" },
+  { name: "Times Viewed", description: '250' },
+  { name: "Country", description: "Malawi" },
+  { name: "Number of Pictures", description: "1000" },
   {
-    name: "Considerations",
+    name: "tags",
     description:
-      "Made from natural materials. Grain and color vary with each item.",
+      "beach, lake, summer",
   },
 ];
 
 export default function individualAlbum() {
   return (
-    <div className="bg-white">
+      <div className="bg-beige">
+          <div className="fixed top-0 left-0 w-full z-50">
+              <VelTechNavbar />
+              </div>
       <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
         <div>
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Technical Specifications
+            Album Title
           </h2>
           <p className="mt-4 text-gray-500">
-            The walnut wood card tray is precision milled to perfectly fit a
-            stack of Focus cards. The powder coated steel divider separates
-            active cards from new ones, or can be used to archive important task
-            lists.
+            Album Description
           </p>
 
           <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
@@ -63,7 +66,8 @@ export default function individualAlbum() {
             className="rounded-lg bg-gray-100"
           />
         </div>
-      </div>
+          </div>
+          <Footer />
     </div>
   );
 }

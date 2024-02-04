@@ -1,4 +1,4 @@
-//! reusable album card
+//! reusable album card - card that is being used to display all albums in the site
 import * as React from "react";
 
 import Button from "@mui/material/Button";
@@ -7,27 +7,25 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import CssBaseline from "@mui/material/CssBaseline";
-import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
+
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+
 import Link from "next/link";
 
 export default function AlbumCard({ card }) {
   return (
-      <Link href="/album" passHref>
-          
-          <Card sx={{ height: "100%", display: "flex", flexDirection: "column", textDecoration: "none" }}
-        
-        
-          >
+    <Link href="/album" passHref>
+      <Card
+        sx={{
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          textDecoration: "none",
+        }}
+      >
         <CardMedia
           component="div"
           sx={{
-            
             pt: "56.25%",
           }}
           image="https://source.unsplash.com/random?wallpapers"
