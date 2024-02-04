@@ -2,10 +2,11 @@ import VelTechNavbar from "@/app/components/navbar";
 
 export default function Wanderers() {
   return (
-    <div className="bg-gray-100">
-      <div className="fixed top-0 left-0 w-full z-50">
+    <div className="pt-16">
+      <div className="fixed top-0 left-0 w-full z-30">
         <VelTechNavbar />
-      </div>
+          </div>
+          
       <ListWanderers />
     </div>
   );
@@ -111,7 +112,7 @@ const people = [
 
 function ListWanderers() {
   return (
-    <ul role="list" className="divide-y bg-beige divide-gray-100 p-4">
+    <ul role="list" className="divide-y bg-beige divide-gray-100 p-8">
       {people.map((person) => (
         <li key={person.email} className="flex justify-between gap-x-6 py-5">
           <div className="flex min-w-0 gap-x-4">
