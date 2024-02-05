@@ -306,12 +306,18 @@ function CallToActionSection() {
         cherished memories.
       </p>
       <div className="flex space-x-4">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <a
+          href="/auth?authType=signin"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
           Sign In
-        </button>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        </a>
+        <a
+          href="/auth?authType=signup"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
           Sign Up
-        </button>
+        </a>
       </div>
     </div>
   );
