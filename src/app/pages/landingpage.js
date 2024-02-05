@@ -79,6 +79,29 @@ export default function LandingPage() {
     "Welcome to EverydayVisa! A place where we celebrate the beauty of everyday life. Dive into a world of shared moments, create albums of your experiences, and let's build a treasure trove of memories together.",
   ];
   const [index, setIndex] = useState(0);
+  const [albumCards, setAlbumCards] = useState([]);
+
+  // fetching sample apps from the backend
+  useEffect(() => {
+    const fetchAlbums = async () => {
+      try {
+        console.log("we are here");
+        const response = await fetch("/api/landing");
+        const data = await response.json();
+        setAlbumCards(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchAlbums();
+  }, []); // Empty dependency array means this effect runs once on mount
+
+  // Log albumCards whenever it changes
+  useEffect(() => {
+    console.log("we are here");
+    console.log(albumCards);
+  }, [albumCards]); // albumCards in dependency array means this effect runs whenever albumCards changes
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -306,12 +329,18 @@ function CallToActionSection() {
         cherished memories.
       </p>
       <div className="flex space-x-4">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <a
+          href="/auth?authType=signin"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
           Sign In
-        </button>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        </a>
+        <a
+          href="/auth?authType=signup"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
           Sign Up
-        </button>
+        </a>
       </div>
     </div>
   );
