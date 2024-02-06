@@ -45,16 +45,19 @@ export default function LandingPage({ albums }) {
         </div>
 
         <div className="bg-hero-pattern bg-cover h-screen flex items-center justify-center relative">
-          <span className="absolute left-5 transform text-lg font-bold text-blue-500 w-full md:w-1/3 animate-fade-in-out leading-loose">
-            {heros[index]}
-          </span>{" "}
-          <Button
+          <div className="flex flex-col md:flex-row items-center">
+  <span className="p-4 text-lg font-bold text-blue-500 w-full md:w-1/3 animate-fade-in-out leading-loose">
+    {heros[index]}
+  </span>
+  <Button
             variant="contained"
             color="primary"
             className="text-black hover:text-white"
           >
             Hello World
           </Button>
+</div>
+        
         </div>
         <div className="bg-beige p-8 py-24 sm:py-32 ">
           <StatsSection />
