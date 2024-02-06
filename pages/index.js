@@ -7,11 +7,15 @@ import Footer from "@/app/components/footer";
 import VelTechNavbar from "@/app/components/navbar";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { CalendarDaysIcon, HandRaisedIcon } from "@heroicons/react/24/outline";
+
 import Slider from "react-slick";
+import { fetchAlbums } from "./api/users";
+import Album from "@/app/components/album";
 
 
 export async function getServerSideProps() {
-  const albums = await fetc();
+  const albums = (await fetchAlbums()).slice(0,6);
   return { props: { albums } };
 }
 
@@ -282,11 +286,9 @@ function CallToActionSection() {
 
 //! Newsletter section
 
-import { CalendarDaysIcon, HandRaisedIcon } from "@heroicons/react/24/outline";
-import Album from "../components/album";
-import VelTechNavbar from "../components/navbar";
-import Footer from "../components/footer";
-import { fetchAlbums } from "../../../pages/api/users";
+
+
+
 
 function NewsletterSection() {
   return (
