@@ -34,9 +34,7 @@ export default function AlbumCard({ album }) {
           <Typography gutterBottom variant="h5" component="h2">
             {album.title}
           </Typography>
-          <Typography>
-           {album.description}
-          </Typography>
+          <Typography>{album.description}</Typography>
         </CardContent>
         <CardActions>
           <Button size="small">{album.dateUploaded}</Button>

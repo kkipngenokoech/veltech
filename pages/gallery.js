@@ -5,7 +5,7 @@ import VelTechNavbar from "@/app/components/navbar";
 import { useEffect, useState } from "react";
 
 export default function Gallery() {
-    const users = [
+  const users = [
     {
       id: 1,
       name: "John Doe",
@@ -34,7 +34,6 @@ export default function Gallery() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
@@ -43,7 +42,7 @@ export default function Gallery() {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = (await response.json());
+        const data = await response.json();
         setData(data);
       } catch (error) {
         setError(error.message);
@@ -65,9 +64,6 @@ export default function Gallery() {
   if (!data) {
     return null;
   }
-
-  
-
 
   return (
     <div className="bg-beige">

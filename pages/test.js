@@ -1,6 +1,5 @@
 // import React, { useState, useEffect } from "react";
 
-
 // function MyComponent() {
 //   const [data, setData] = useState(null);
 //   const [isLoading, setIsLoading] = useState(false);
@@ -46,8 +45,6 @@
 
 // export default MyComponent;
 
-
-
 // function DataDisplayComponent({ data }) { // destructure data from props
 //   return (
 //     <div>
@@ -63,9 +60,6 @@
 //     </div>
 //   );
 // }
-
-
-
 
 " use client";
 import { Button } from "@mui/material";
@@ -141,103 +135,96 @@ export default function LandingPage() {
     return null;
   }
 
-  
-
   return (
-  <div className="bg-beige">
-    {isLoading ? (
-      <div>Loading...</div>
-          ) : <div>{data.length}</div>
-    //(
-    //   <>import React, { useState, useEffect } from "react";
+    <div className="bg-beige">
+      {
+        isLoading ? <div>Loading...</div> : <div>{data.length}</div>
+        //(
+        //   <>import React, { useState, useEffect } from "react";
 
+        // function MyComponent() {
+        //   const [data, setData] = useState(null);
+        //   const [isLoading, setIsLoading] = useState(false);
+        //   const [error, setError] = useState(null);
 
-// function MyComponent() {
-//   const [data, setData] = useState(null);
-//   const [isLoading, setIsLoading] = useState(false);
-//   const [error, setError] = useState(null);
+        //   useEffect(() => {
+        //     const fetchData = async () => {
+        //       setIsLoading(true);
+        //       try {
+        //         const response = await fetch("/api/landing");
+        //         if (!response.ok) {
+        //           throw new Error(`HTTP error! status: ${response.status}`);
+        //         }
+        //         const data = (await response.json()).slice(0, 6);
+        //         setData(data);
+        //       } catch (error) {
+        //         setError(error.message);
+        //       }
+        //       setIsLoading(false);
+        //     };
 
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       setIsLoading(true);
-//       try {
-//         const response = await fetch("/api/landing");
-//         if (!response.ok) {
-//           throw new Error(`HTTP error! status: ${response.status}`);
-//         }
-//         const data = (await response.json()).slice(0, 6);
-//         setData(data);
-//       } catch (error) {
-//         setError(error.message);
-//       }
-//       setIsLoading(false);
-//     };
+        //     fetchData();
+        //   }, []);
 
-//     fetchData();
-//   }, []);
+        //   if (isLoading) {
+        //     return <div>Loading...</div>;
+        //   }
 
-//   if (isLoading) {
-//     return <div>Loading...</div>;
-//   }
+        //   if (error) {
+        //     return <div>Error: {error}</div>;
+        //   }
 
-//   if (error) {
-//     return <div>Error: {error}</div>;
-//   }
+        //   if (!data) {
+        //     return null;
+        //   }
 
-//   if (!data) {
-//     return null;
-//   }
+        //   return (
+        //     <div>
+        //       <DataDisplayComponent data={data} /> {/* pass the data as a prop */}
+        //     </div>
+        //   );
+        // }
 
-//   return (
-//     <div>
-//       <DataDisplayComponent data={data} /> {/* pass the data as a prop */}
-//     </div>
-//   );
-// }
+        // export default MyComponent;
 
-// export default MyComponent;
+        // function DataDisplayComponent({ data }) { // destructure data from props
+        //   return (
+        //     <div>
+        //       {/* Render your data here */}
+        //       {data.map((item, index) => (
+        //         <div key={index}>
+        //           <h2>{item.title}</h2>
+        //           <img src={item.coverImage} alt={item.title} />
+        //           <p>{item.description}</p>
+        //           {/* Render other properties of the item */}
+        //         </div>
+        //       ))}
+        //     </div>
+        //   );
+        // }
 
-
-
-// function DataDisplayComponent({ data }) { // destructure data from props
-//   return (
-//     <div>
-//       {/* Render your data here */}
-//       {data.map((item, index) => (
-//         <div key={index}>
-//           <h2>{item.title}</h2>
-//           <img src={item.coverImage} alt={item.title} />
-//           <p>{item.description}</p>
-//           {/* Render other properties of the item */}
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
-
-
-    //     <div className="bg-hero-pattern bg-cover h-screen flex items-center justify-center relative">
-    //       <span className="absolute left-5 transform text-lg font-bold text-blue-500 w-full md:w-1/3 animate-fade-in-out leading-loose">
-    //         {heros[index]}
-    //       </span>{" "}
-    //       <Button
-    //         variant="contained"
-    //         color="primary"
-    //         className="text-black hover:text-white"
-    //       >
-    //         Hello World
-    //       </Button>
-    //     </div>
-    //     <div className="bg-beige p-8 py-24 sm:py-32 ">
-    //       <StatsSection />
-    //       <AboutUsSection />
-    //       <FeaturedAlbumsSection albums={albumCards} />
-    //       <CallToActionSection />
-    //       <NewsletterSection />
-    //     </div>
-    //   </>
-    // )
-  }
-  </div>
-);
+        //     <div className="bg-hero-pattern bg-cover h-screen flex items-center justify-center relative">
+        //       <span className="absolute left-5 transform text-lg font-bold text-blue-500 w-full md:w-1/3 animate-fade-in-out leading-loose">
+        //         {heros[index]}
+        //       </span>{" "}
+        //       <Button
+        //         variant="contained"
+        //         color="primary"
+        //         className="text-black hover:text-white"
+        //       >
+        //         Hello World
+        //       </Button>
+        //     </div>
+        //     <div className="bg-beige p-8 py-24 sm:py-32 ">
+        //       <StatsSection />
+        //       <AboutUsSection />
+        //       <FeaturedAlbumsSection albums={albumCards} />
+        //       <CallToActionSection />
+        //       <NewsletterSection />
+        //     </div>
+        //   </>
+        // )
+      }
+    </div>
+  );
 }

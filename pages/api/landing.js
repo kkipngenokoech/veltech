@@ -1,4 +1,4 @@
-import { getCodes, getName } from 'country-list';
+import { getCodes, getName } from "country-list";
 export default async function Landinghandler(req, res) {
   try {
     const albumResponse = await fetch(
@@ -27,7 +27,7 @@ export default async function Landinghandler(req, res) {
           : "/images/placeholder.jpg", // Use a placeholder image if no photo was found
         title: album.title,
         description: getRandomDescription(),
-        dateUploaded:getRandomDate(),
+        dateUploaded: getRandomDate(),
         country: getRandomCountry(),
       };
     });
@@ -44,19 +44,19 @@ function getRandomDate() {
   const start = new Date();
   start.setFullYear(start.getFullYear() - 1);
   const end = new Date();
-  const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-  return date.toISOString().split('T')[0]; // format as YYYY-MM-DD
+  const date = new Date(
+    start.getTime() + Math.random() * (end.getTime() - start.getTime())
+  );
+  return date.toISOString().split("T")[0]; // format as YYYY-MM-DD
 }
 
 // function to get random country
-
 
 function getRandomCountry() {
   const countryCodes = getCodes();
   const index = Math.floor(Math.random() * countryCodes.length);
   return getName(countryCodes[index]);
 }
-
 
 // function to get random description
 function getRandomDescription() {
@@ -72,6 +72,3 @@ function getRandomDescription() {
   const index = Math.floor(Math.random() * heros.length);
   return heros[index];
 }
-
-
-
