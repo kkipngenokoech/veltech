@@ -3,7 +3,6 @@ import ImageCard from "@/app/components/imagecard";
 import VelTechNavbar from "@/app/components/navbar";
 import { fetchAlbum } from "./api/service";
 
-
 export async function getServerSideProps(context) {
   const { albumid } = context.query;
   const album = await fetchAlbum(albumid);
@@ -12,19 +11,19 @@ export async function getServerSideProps(context) {
 
 export default function individualAlbum({ album }) {
   const features = [
-  { name: "Creator", description: `${album.wanderer.username}` },
-  {
-    name: "Date Uploaded",
-    description: `${album.dateUploaded}`,
-  },
-  { name: "Times Viewed", description: `${album.timesViewed}` },
-  { name: "Country", description: `${album.country}` },
-  { name: "Number of Pictures", description: `${album.photos.length}` },
-  {
-    name: "tags",
-    description: "beach, lake, summer",
-  },
-];
+    { name: "Creator", description: `${album.wanderer.username}` },
+    {
+      name: "Date Uploaded",
+      description: `${album.dateUploaded}`,
+    },
+    { name: "Times Viewed", description: `${album.timesViewed}` },
+    { name: "Country", description: `${album.country}` },
+    { name: "Number of Pictures", description: `${album.photos.length}` },
+    {
+      name: "tags",
+      description: "beach, lake, summer",
+    },
+  ];
   return (
     <div className="bg-beige">
       <div className="fixed top-0 left-0 w-full z-50">
@@ -57,17 +56,17 @@ export default function individualAlbum({ album }) {
                 className="rounded-lg bg-gray-100 object-cover w-full h-full"
               />
             );
-          } )}
+          })}
         </div>
       </div>
-      <AlbumPictures pictures={album.photos.slice(4)} wanderer= {album.wanderer} />
+      <AlbumPictures
+        pictures={album.photos.slice(4)}
+        wanderer={album.wanderer}
+      />
       <Footer />
     </div>
   );
 }
-
-
-
 
 function AlbumPictures({ pictures, wanderer }) {
   return (
@@ -79,7 +78,7 @@ function AlbumPictures({ pictures, wanderer }) {
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {pictures.map((picture) => (
-            <ImageCard picture={picture} wanderer = {wanderer} />
+            <ImageCard picture={picture} wanderer={wanderer} />
           ))}
         </div>
       </div>

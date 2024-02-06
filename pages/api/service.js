@@ -63,8 +63,8 @@ function fetchPhotos(albumId) {
       return photos.map((photo, index) => ({
         ...photo,
         description: getRandomDescription(),
-    rating: Math.floor(Math.random() * 4) + 1,
-    reviews: Math.floor(Math.random() * 100000),
+        rating: Math.floor(Math.random() * 4) + 1,
+        reviews: Math.floor(Math.random() * 100000),
         coverImage: `https://source.unsplash.com/random/?nature,landscape,${index}`,
         dateUploaded: getRandomDate(),
         country: getRandomCountry(),

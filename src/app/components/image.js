@@ -3,15 +3,11 @@ import { Dialog, RadioGroup, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { StarIcon } from "@heroicons/react/20/solid";
 
-
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function ImageModal({ open, setOpen, image, wanderer }) {
-  
-
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10 bg-beige" onClose={setOpen}>
@@ -66,7 +62,9 @@ export default function ImageModal({ open, setOpen, image, wanderer }) {
                         aria-labelledby="information-heading"
                         className="mt-2"
                       >
-                        <p className="text-2xl text-gray-900">album from { wanderer.username }</p>
+                        <p className="text-2xl text-gray-900">
+                          album from {wanderer.username}
+                        </p>
 
                         {/* Reviews */}
                         <div className="mt-6">
@@ -122,7 +120,7 @@ export default function ImageModal({ open, setOpen, image, wanderer }) {
                           <h2 className="text-lg font-medium text-gray-900">
                             Uploaded by
                           </h2>
-                          <UserProfile wanderer={ wanderer } />
+                          <UserProfile wanderer={wanderer} />
                         </div>
 
                         <button
@@ -144,7 +142,7 @@ export default function ImageModal({ open, setOpen, image, wanderer }) {
   );
 }
 
-function UserProfile({wanderer}) {
+function UserProfile({ wanderer }) {
   const person = {
     name: "Leslie Alexander",
     role: "Co-Founder / CEO",

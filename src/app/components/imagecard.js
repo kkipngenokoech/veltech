@@ -1,7 +1,6 @@
 import { useState } from "react";
 import ImageModal from "./image";
 
-
 export default function ImageCard({ picture, wanderer }) {
   const [open, setOpen] = useState(false);
 
@@ -28,7 +27,12 @@ export default function ImageCard({ picture, wanderer }) {
         </div>
       </div>
 
-      <ImageModal open={open} setOpen={setOpen} image={picture} wanderer={wanderer} />
+      <ImageModal
+        open={open}
+        setOpen={setOpen}
+        image={picture}
+        wanderer={wanderer}
+      />
     </div>
   );
 }

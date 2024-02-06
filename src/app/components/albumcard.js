@@ -1,6 +1,5 @@
 //! reusable album card - card that is being used to display all albums in the site
 
-
 import Button from "@mui/material/Button";
 
 import Card from "@mui/material/Card";
@@ -30,8 +29,8 @@ export default function AlbumCard({ album }) {
           sx={{
             pt: "56.25%",
           }}
-           image={imageUrl}
-      onError={() => setImageUrl(album.url)}
+          image={imageUrl}
+          onError={() => setImageUrl(album.url)}
         />
         <CardContent sx={{ flexGrow: 1 }}>
           <Typography gutterBottom variant="h5" component="h2">
