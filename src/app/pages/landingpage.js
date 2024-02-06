@@ -17,55 +17,6 @@ const albums = [
     dateUploaded: "Date 1",
     country: "Country 1",
   },
-  {
-    id: 1,
-    coverImage: "/images/cover-photo.jpg",
-    title: "Album 1",
-    description: "Description 1",
-    dateUploaded: "Date 1",
-    country: "Country 1",
-  },
-  {
-    id: 1,
-    coverImage: "/images/cover-photo.jpg",
-    title: "Album 1",
-    description: "Description 1",
-    dateUploaded: "Date 1",
-    country: "Country 1",
-  },
-  {
-    id: 1,
-    coverImage: "/images/cover-photo.jpg",
-    title: "Album 1",
-    description: "Description 1",
-    dateUploaded: "Date 1",
-    country: "Country 1",
-  },
-  {
-    id: 1,
-    coverImage: "/images/cover-photo.jpg",
-    title: "Album 1",
-    description: "Description 1",
-    dateUploaded: "Date 1",
-    country: "Country 1",
-  },
-  {
-    id: 1,
-    coverImage: "/images/cover-photo.jpg",
-    title: "Album 1",
-    description: "Description 1",
-    dateUploaded: "Date 1",
-    country: "Country 1",
-  },
-  {
-    id: 1,
-    coverImage: "/images/cover-photo.jpg",
-    title: "Album 1",
-    description: "Description 1",
-    dateUploaded: "Date 1",
-    country: "Country 1",
-  },
-  // Add more albums here...
 ];
 
 export default function LandingPage() {
@@ -79,29 +30,9 @@ export default function LandingPage() {
     "Welcome to EverydayVisa! A place where we celebrate the beauty of everyday life. Dive into a world of shared moments, create albums of your experiences, and let's build a treasure trove of memories together.",
   ];
   const [index, setIndex] = useState(0);
-  const [albumCards, setAlbumCards] = useState([]);
-
-  // fetching sample apps from the backend
-  useEffect(() => {
-    const fetchAlbums = async () => {
-      try {
-        console.log("we are here");
-        const response = await fetch("/api/landing");
-        const data = await response.json();
-        setAlbumCards(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchAlbums();
-  }, []); // Empty dependency array means this effect runs once on mount
-
-  // Log albumCards whenever it changes
-  useEffect(() => {
-    console.log("we are here");
-    console.log(albumCards);
-  }, [albumCards]); // albumCards in dependency array means this effect runs whenever albumCards changes
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -110,27 +41,64 @@ export default function LandingPage() {
     return () => clearInterval(timer); // Clean up on component unmount
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch("/api/landing");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = (await response.json()).slice(0, 6);
+        setData(data);
+      } catch (error) {
+        setError(error.message);
+      }
+      setIsLoading(false);
+    };
+
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!data) {
+    return null;
+  }
+
   return (
     <div className="bg-beige">
-      <div className="bg-hero-pattern bg-cover h-screen flex items-center justify-center relative">
-        <span className="absolute left-5 transform text-lg font-bold text-blue-500 w-full md:w-1/3 animate-fade-in-out leading-loose">
-          {heros[index]}
-        </span>{" "}
-        <Button
-          variant="contained"
-          color="primary"
-          className="text-black hover:text-white"
-        >
-          Hello World
-        </Button>
-      </div>
-      <div className="bg-beige p-8 py-24 sm:py-32 ">
-        <StatsSection />
-        <AboutUsSection />
-        <FeaturedAlbumsSection albums={albums} />
-        <CallToActionSection />
-        <NewsletterSection />
-      </div>
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          <div className="bg-hero-pattern bg-cover h-screen flex items-center justify-center relative">
+            <span className="absolute left-5 transform text-lg font-bold text-blue-500 w-full md:w-1/3 animate-fade-in-out leading-loose">
+              {heros[index]}
+            </span>{" "}
+            <Button
+              variant="contained"
+              color="primary"
+              className="text-black hover:text-white"
+            >
+              Hello World
+            </Button>
+          </div>
+          <div className="bg-beige p-8 py-24 sm:py-32 ">
+            <StatsSection />
+            <AboutUsSection />
+            <FeaturedAlbumsSection albums={data} />
+            <CallToActionSection />
+            <NewsletterSection />
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -296,13 +264,12 @@ function AboutUsSection() {
 //! Featured albums section
 
 function FeaturedAlbumsSection({ albums }) {
-  const cards = [1, 2, 3, 4, 5, 6];
   return (
     <div className="bg-beige py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            EverydayVisa Featured Albums
+            EverydayVisa Featured Albums,
           </h2>
           <p className="mt-2 text-lg leading-8 text-gray-600">
             Explore captivating stories through EverydayVisa's featured albums.
@@ -311,7 +278,7 @@ function FeaturedAlbumsSection({ albums }) {
           </p>
         </div>
         <div className="mx-auto mt-10 w-full gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0">
-          <Album cards={cards} />
+          <Album albums={albums} />
         </div>
       </div>
     </div>
