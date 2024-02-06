@@ -11,7 +11,7 @@ import AlbumCard from "./albumcard";
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function Album({ cards }) {
+export default function Album({ albums }) {
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
@@ -19,11 +19,10 @@ export default function Album({ cards }) {
       <main>
         {/* Hero unit */}
         <Container sx={{ py: 8 }} maxWidth="md">
-          {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <AlbumCard card={card} />
+            {albums.map((album) => (
+              <Grid item key={album} xs={12} sm={6} md={4}>
+                <AlbumCard album={album} />
               </Grid>
             ))}
           </Grid>

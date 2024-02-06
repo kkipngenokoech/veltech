@@ -12,7 +12,7 @@ import Typography from "@mui/material/Typography";
 
 import Link from "next/link";
 
-export default function AlbumCard({ card }) {
+export default function AlbumCard({ album }) {
   return (
     <Link href="/album" passHref>
       <Card
@@ -32,7 +32,7 @@ export default function AlbumCard({ card }) {
         />
         <CardContent sx={{ flexGrow: 1 }}>
           <Typography gutterBottom variant="h5" component="h2">
-            Heading
+            {album.title}
           </Typography>
           <Typography>
             This is a media card. You can use this section to describe the
@@ -40,8 +40,8 @@ export default function AlbumCard({ card }) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">View</Button>
-          <Button size="small">Edit</Button>
+          <Button size="small">{album.dateUploaded}</Button>
+          <Button size="small">{album.country}</Button>
         </CardActions>
       </Card>
     </Link>

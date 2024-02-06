@@ -2,9 +2,55 @@ import Album from "@/app/components/album";
 import AlbumCard from "@/app/components/albumcard";
 import Footer from "@/app/components/footer";
 import VelTechNavbar from "@/app/components/navbar";
+import { useEffect, useState } from "react";
 
 export default function Gallery() {
   const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const [albumCards, setAlbumCards] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch("/api/landing");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setAlbumCards(data);
+      } catch (error) {
+        setError(error.message);
+      }
+      setIsLoading(false);
+    };
+
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!albumCards) {
+    return null;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!albumCards) {
+    return null;
+  }
   const users = [
     {
       id: 1,
@@ -37,11 +83,11 @@ export default function Gallery() {
       </div>
       <div className="pt-16">
         <div className="p-8">
-          <TrendingAlbums albums={cards} />
-          <LatestUploads albums={cards} />
+          <TrendingAlbums albums={albumCards.slice(0, 8)} />
+          <LatestUploads albums={albumCards.slice(9, 14)} />
           <UserSpotlight users={users} />
         </div>
-        <Album cards={cards} />
+        <Album cards={albumCards} />
       </div>
 
       <Footer />
