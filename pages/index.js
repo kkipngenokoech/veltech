@@ -3,23 +3,22 @@ import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
-import AlbumCard from "../components/album";
+import Footer from "@/app/components/footer";
+import VelTechNavbar from "@/app/components/navbar";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { CalendarDaysIcon, HandRaisedIcon } from "@heroicons/react/24/outline";
+
 import Slider from "react-slick";
+import { fetchAlbums } from "./api/service";
+import Album from "@/app/components/album";
 
-const albums = [
-  {
-    id: 1,
-    coverImage: "/images/cover-photo.jpg",
-    title: "Album 1",
-    description: "Description 1",
-    dateUploaded: "Date 1",
-    country: "Country 1",
-  },
-];
+export async function getServerSideProps() {
+  const albums = (await fetchAlbums()).slice(0, 6);
+  return { props: { albums } };
+}
 
-export default function LandingPage() {
+export default function LandingPage({ albums }) {
   const heros = [
     "Welcome to EverydayVisa! Where every photo tells a story and every album is a journey. Join us in capturing the beauty of your day-to-day adventures and sharing the moments that matter most.",
     "Hello and welcome to EverydayVisa, your passport to a world of shared memories! Embark on a visual journey with us as we celebrate the beauty of the everyday. Create your albums, share your stories, and relive the magic of your day-to-day escapades.",
@@ -30,9 +29,6 @@ export default function LandingPage() {
     "Welcome to EverydayVisa! A place where we celebrate the beauty of everyday life. Dive into a world of shared moments, create albums of your experiences, and let's build a treasure trove of memories together.",
   ];
   const [index, setIndex] = useState(0);
-  const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -41,47 +37,18 @@ export default function LandingPage() {
     return () => clearInterval(timer); // Clean up on component unmount
   }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch("/api/landing");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = (await response.json()).slice(0, 6);
-        setData(data);
-      } catch (error) {
-        setError(error.message);
-      }
-      setIsLoading(false);
-    };
-
-    fetchData();
-  }, []);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!data) {
-    return null;
-  }
-
   return (
     <div className="bg-beige">
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <>
-          <div className="bg-hero-pattern bg-cover h-screen flex items-center justify-center relative">
-            <span className="absolute left-5 transform text-lg font-bold text-blue-500 w-full md:w-1/3 animate-fade-in-out leading-loose">
+      <>
+        <div className="fixed top-0 left-0 w-full z-50">
+          <VelTechNavbar />
+        </div>
+
+        <div className="bg-hero-pattern bg-cover h-screen flex items-center justify-center relative">
+          <div className="flex flex-col md:flex-row items-center">
+            <span className="p-4 text-lg font-bold text-blue-500 w-full md:w-1/3 animate-fade-in-out leading-loose">
               {heros[index]}
-            </span>{" "}
+            </span>
             <Button
               variant="contained"
               color="primary"
@@ -90,15 +57,16 @@ export default function LandingPage() {
               Hello World
             </Button>
           </div>
-          <div className="bg-beige p-8 py-24 sm:py-32 ">
-            <StatsSection />
-            <AboutUsSection />
-            <FeaturedAlbumsSection albums={data} />
-            <CallToActionSection />
-            <NewsletterSection />
-          </div>
-        </>
-      )}
+        </div>
+        <div className="bg-beige p-8 py-24 sm:py-32 ">
+          <StatsSection />
+          <AboutUsSection />
+          <FeaturedAlbumsSection albums={albums} />
+          <CallToActionSection />
+          <NewsletterSection />
+          <Footer />
+        </div>
+      </>
     </div>
   );
 }
@@ -314,9 +282,6 @@ function CallToActionSection() {
 }
 
 //! Newsletter section
-
-import { CalendarDaysIcon, HandRaisedIcon } from "@heroicons/react/24/outline";
-import Album from "../components/album";
 
 function NewsletterSection() {
   return (

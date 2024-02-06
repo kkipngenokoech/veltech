@@ -27,6 +27,7 @@ export async function fetchAlbums(userId) {
 
   const enhancedAlbums = albums.map((album) => ({
     ...album,
+    coverImage: `https://source.unsplash.com/random/?nature,cities,beaches,landscape,wallpapers,${album.id}`,
     description: getRandomDescription(),
     dateUploaded: getRandomDate(),
     country: getRandomCountry(),
@@ -34,6 +35,59 @@ export async function fetchAlbums(userId) {
 
   return enhancedAlbums;
 }
+
+// function too get album data from the JSON placeholder API with album id
+export async function fetchAlbum(albumId) {
+  const res = await fetch(
+    `https://jsonplaceholder.typicode.com/albums/${albumId}`
+  );
+  const album = await res.json();
+  const enhancedAlbum = {
+    ...album,
+    description: getRandomDescription(),
+    dateUploaded: getRandomDate(),
+    country: getRandomCountry(),
+    timesViewed: Math.floor(Math.random() * 1000),
+    wanderer: await fetchWandererById(album.userId),
+    photos: await fetchPhotos(albumId),
+  };
+  return enhancedAlbum;
+}
+
+// fetching photos from the JSON placeholder API using albumId for fetched albums
+
+function fetchPhotos(albumId) {
+  return fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`)
+    .then((res) => res.json())
+    .then((photos) => {
+      return photos.map((photo, index) => ({
+        ...photo,
+        description: getRandomDescription(),
+        rating: Math.floor(Math.random() * 4) + 1,
+        reviews: Math.floor(Math.random() * 100000),
+        coverImage: `https://source.unsplash.com/random/?nature,landscape,${index}`,
+        dateUploaded: getRandomDate(),
+        country: getRandomCountry(),
+      }));
+    });
+}
+
+// fetch user who uploaded the album
+function fetchWandererById(userId) {
+  return fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+    .then((res) => res.json())
+    .then((user) => {
+      const enhancedUser = {
+        ...user,
+        avatar: `https://source.unsplash.com/random/?portrait`,
+        description: getRandomDescription(),
+        dateJoined: getRandomDate(),
+      };
+      return enhancedUser;
+    });
+}
+
+// function to get random date
 
 function getRandomDate() {
   const start = new Date();

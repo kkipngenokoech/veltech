@@ -2,9 +2,14 @@ import Album from "@/app/components/album";
 import AlbumCard from "@/app/components/albumcard";
 import Footer from "@/app/components/footer";
 import VelTechNavbar from "@/app/components/navbar";
-import { useEffect, useState } from "react";
+import { fetchAlbums } from "./api/service";
 
-export default function Gallery() {
+export async function getServerSideProps() {
+  const albums = await fetchAlbums();
+  return { props: { albums } };
+}
+
+export default function Gallery({ albums }) {
   const users = [
     {
       id: 1,
@@ -30,40 +35,6 @@ export default function Gallery() {
       tags: ["music", "artist", "new"],
     },
   ];
-  const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch("/api/landing");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setData(data);
-      } catch (error) {
-        setError(error.message);
-      }
-      setIsLoading(false);
-    };
-
-    fetchData();
-  }, []);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!data) {
-    return null;
-  }
 
   return (
     <div className="bg-beige">
@@ -72,11 +43,11 @@ export default function Gallery() {
       </div>
       <div className="pt-16">
         <div className="p-8">
-          <TrendingAlbums albums={data.slice(0, 8)} />
-          <LatestUploads albums={data.slice(9, 14)} />
+          <TrendingAlbums albums={albums.slice(0, 8)} />
+          <LatestUploads albums={albums.slice(9, 14)} />
           <UserSpotlight users={users} />
         </div>
-        <Album albums={data} />
+        <Album albums={albums} />
       </div>
 
       <Footer />

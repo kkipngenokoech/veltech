@@ -1,7 +1,7 @@
 import Footer from "@/app/components/footer";
 import VelTechNavbar from "@/app/components/navbar";
 import Testimonials from "@/app/components/testimonials";
-import { fetchWanderers } from "./api/users";
+import { fetchWanderers } from "./api/service";
 import WandererCard from "@/app/components/wanderer";
 
 export async function getServerSideProps() {

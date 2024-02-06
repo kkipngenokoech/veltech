@@ -3,40 +3,11 @@ import { Dialog, RadioGroup, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { StarIcon } from "@heroicons/react/20/solid";
 
-const product = {
-  name: "Basic Tee 6-Pack ",
-  price: "$192",
-  rating: 3.9,
-  reviewCount: 117,
-  href: "#",
-  imageSrc:
-    "https://tailwindui.com/img/ecommerce-images/product-quick-preview-02-detail.jpg",
-  imageAlt: "Two each of gray, white, and black shirts arranged on table.",
-  colors: [
-    { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-    { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-    { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
-  ],
-  sizes: [
-    { name: "XXS", inStock: true },
-    { name: "XS", inStock: true },
-    { name: "S", inStock: true },
-    { name: "M", inStock: true },
-    { name: "L", inStock: true },
-    { name: "XL", inStock: true },
-    { name: "XXL", inStock: true },
-    { name: "XXXL", inStock: false },
-  ],
-};
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function ProductModal({ open, setOpen, image }) {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
-
+export default function ImageModal({ open, setOpen, image, wanderer }) {
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10 bg-beige" onClose={setOpen}>
@@ -77,21 +48,23 @@ export default function ProductModal({ open, setOpen, image }) {
                   <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
                     <div className="aspect-h-3 aspect-w-2 overflow-hidden rounded-lg bg-gray-100 sm:col-span-4 lg:col-span-5">
                       <img
-                        src={product.imageSrc}
-                        alt={product.imageAlt}
+                        src={image.coverImage}
+                        alt={image.description}
                         className="object-cover object-center"
                       />
                     </div>
                     <div className="sm:col-span-8 lg:col-span-7">
                       <h2 className="text-2xl font-bold text-gray-900 sm:pr-12">
-                        {product.name}
+                        {image.title}
                       </h2>
 
                       <section
                         aria-labelledby="information-heading"
                         className="mt-2"
                       >
-                        <p className="text-2xl text-gray-900">album from</p>
+                        <p className="text-2xl text-gray-900">
+                          album from {wanderer.username}
+                        </p>
 
                         {/* Reviews */}
                         <div className="mt-6">
@@ -102,7 +75,7 @@ export default function ProductModal({ open, setOpen, image }) {
                                 <StarIcon
                                   key={rating}
                                   className={classNames(
-                                    product.rating > rating
+                                    image.rating > rating
                                       ? "text-gray-900"
                                       : "text-gray-200",
                                     "h-5 w-5 flex-shrink-0"
@@ -112,13 +85,13 @@ export default function ProductModal({ open, setOpen, image }) {
                               ))}
                             </div>
                             <p className="sr-only">
-                              {product.rating} out of 5 stars
+                              {image.rating} out of 5 stars
                             </p>
                             <a
                               href="#"
                               className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500"
                             >
-                              {product.reviewCount} reviews
+                              {image.reviews} reviews
                             </a>
                           </div>
                         </div>
@@ -132,7 +105,7 @@ export default function ProductModal({ open, setOpen, image }) {
                         <div className="mt-4 flex items-center">
                           <div>
                             <h2 className="text-lg font-medium text-gray-900">
-                              Johannesburg, South Africa
+                              {image.country}
                             </h2>
 
                             <p className="text-sm text-gray-500">
@@ -147,7 +120,7 @@ export default function ProductModal({ open, setOpen, image }) {
                           <h2 className="text-lg font-medium text-gray-900">
                             Uploaded by
                           </h2>
-                          <UserProfile />
+                          <UserProfile wanderer={wanderer} />
                         </div>
 
                         <button
@@ -169,7 +142,7 @@ export default function ProductModal({ open, setOpen, image }) {
   );
 }
 
-function UserProfile() {
+function UserProfile({ wanderer }) {
   const person = {
     name: "Leslie Alexander",
     role: "Co-Founder / CEO",
@@ -179,16 +152,16 @@ function UserProfile() {
   return (
     <>
       <div className="flex items-center justify-between"></div>
-      <li key={person.name}>
+      <li key={wanderer.username}>
         <div className="flex items-center gap-x-6">
           <img
             className="h-16 w-16 rounded-full"
-            src={person.imageUrl}
-            alt=""
+            src={wanderer.avatar}
+            alt="alt"
           />
           <div>
             <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">
-              {person.name}
+              {wanderer.name}
             </h3>
             <p className="text-sm font-semibold leading-6 text-indigo-600">
               {person.role}
