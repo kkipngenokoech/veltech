@@ -26,7 +26,7 @@ export default async function Landinghandler(req, res) {
           ? randomPhoto.thumbnailUrl
           : "/images/placeholder.jpg", // Use a placeholder image if no photo was found
         title: album.title,
-        description: `Description ${index + 1}`,
+        description: getRandomDescription(),
         dateUploaded:getRandomDate(),
         country: getRandomCountry(),
       };
@@ -55,4 +55,20 @@ function getRandomCountry() {
   const countryCodes = getCodes();
   const index = Math.floor(Math.random() * countryCodes.length);
   return getName(countryCodes[index]);
+}
+
+
+// function to get random description
+function getRandomDescription() {
+  const heros = [
+    "Welcome to EverydayVisa! Where every photo tells a story and every album is a journey. Join us in capturing the beauty of your day-to-day adventures and sharing the moments that matter most.",
+    "Hello and welcome to EverydayVisa, your passport to a world of shared memories! Embark on a visual journey with us as we celebrate the beauty of the everyday. Create your albums, share your stories, and relive the magic of your day-to-day escapades.",
+    "Welcome to EverydayVisa! Your portal to a world where every photo is a visa to cherished memories. Start exploring, start sharing, and let the adventures of today become the cherished memories of tomorrow.",
+    "Hello and welcome to EverydayVisa, your passport to a world of shared memories! Embark on a visual journey with us as we celebrate the beauty of the everyday. Create your albums, share your stories, and relive the magic of your day-to-day escapades.",
+    "Welcome to EverydayVisa! Your portal to a world where every photo is a visa to cherished memories. Start exploring, start sharing, and let the adventures of today become the cherished memories of tomorrow.",
+    "A heartfelt welcome to EverydayVisa, our community of explorers! Discover the joy of sharing your daily adventures through photos. Join us, and together let's turn the ordinary into extraordinary memories.",
+    "Welcome to EverydayVisa! A place where we celebrate the beauty of everyday life. Dive into a world of shared moments, create albums of your experiences, and let's build a treasure trove of memories together.",
+  ];
+  const index = Math.floor(Math.random() * heros.length);
+  return heros[index];
 }

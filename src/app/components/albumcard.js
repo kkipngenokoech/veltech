@@ -35,8 +35,7 @@ export default function AlbumCard({ album }) {
             {album.title}
           </Typography>
           <Typography>
-            This is a media card. You can use this section to describe the
-            content.
+           {album.description}
           </Typography>
         </CardContent>
         <CardActions>
