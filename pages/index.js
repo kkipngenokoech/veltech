@@ -10,12 +10,11 @@ import "slick-carousel/slick/slick-theme.css";
 import { CalendarDaysIcon, HandRaisedIcon } from "@heroicons/react/24/outline";
 
 import Slider from "react-slick";
-import { fetchAlbums } from "./api/users";
+import { fetchAlbums } from "./api/service";
 import Album from "@/app/components/album";
 
-
 export async function getServerSideProps() {
-  const albums = (await fetchAlbums()).slice(0,6);
+  const albums = (await fetchAlbums()).slice(0, 6);
   return { props: { albums } };
 }
 
@@ -30,7 +29,6 @@ export default function LandingPage({ albums }) {
     "Welcome to EverydayVisa! A place where we celebrate the beauty of everyday life. Dive into a world of shared moments, create albums of your experiences, and let's build a treasure trove of memories together.",
   ];
   const [index, setIndex] = useState(0);
-  
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -39,37 +37,34 @@ export default function LandingPage({ albums }) {
     return () => clearInterval(timer); // Clean up on component unmount
   }, []);
 
-  
   return (
     <div className="bg-beige">
-  
-          <>
-            <div className="fixed top-0 left-0 w-full z-50">
-        <VelTechNavbar />
-      </div>
-      
-          <div className="bg-hero-pattern bg-cover h-screen flex items-center justify-center relative">
-            <span className="absolute left-5 transform text-lg font-bold text-blue-500 w-full md:w-1/3 animate-fade-in-out leading-loose">
-              {heros[index]}
-            </span>{" "}
-            <Button
-              variant="contained"
-              color="primary"
-              className="text-black hover:text-white"
-            >
-              Hello World
-            </Button>
-          </div>
-          <div className="bg-beige p-8 py-24 sm:py-32 ">
-            <StatsSection />
-            <AboutUsSection />
-            <FeaturedAlbumsSection albums={albums} />
-            <CallToActionSection />
-              <NewsletterSection />
-              <Footer />
-          </div>
-        </>
-      
+      <>
+        <div className="fixed top-0 left-0 w-full z-50">
+          <VelTechNavbar />
+        </div>
+
+        <div className="bg-hero-pattern bg-cover h-screen flex items-center justify-center relative">
+          <span className="absolute left-5 transform text-lg font-bold text-blue-500 w-full md:w-1/3 animate-fade-in-out leading-loose">
+            {heros[index]}
+          </span>{" "}
+          <Button
+            variant="contained"
+            color="primary"
+            className="text-black hover:text-white"
+          >
+            Hello World
+          </Button>
+        </div>
+        <div className="bg-beige p-8 py-24 sm:py-32 ">
+          <StatsSection />
+          <AboutUsSection />
+          <FeaturedAlbumsSection albums={albums} />
+          <CallToActionSection />
+          <NewsletterSection />
+          <Footer />
+        </div>
+      </>
     </div>
   );
 }
@@ -285,10 +280,6 @@ function CallToActionSection() {
 }
 
 //! Newsletter section
-
-
-
-
 
 function NewsletterSection() {
   return (

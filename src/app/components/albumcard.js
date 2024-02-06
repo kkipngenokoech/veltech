@@ -14,7 +14,7 @@ import Link from "next/link";
 
 export default function AlbumCard({ album }) {
   return (
-    <Link href="/album" passHref>
+    <Link href={`/album?albumid=${album.id}`}>
       <Card
         sx={{
           height: "100%",

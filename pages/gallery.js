@@ -2,15 +2,14 @@ import Album from "@/app/components/album";
 import AlbumCard from "@/app/components/albumcard";
 import Footer from "@/app/components/footer";
 import VelTechNavbar from "@/app/components/navbar";
-import { fetchAlbums } from "./api/users";
+import { fetchAlbums } from "./api/service";
 
 export async function getServerSideProps() {
   const albums = await fetchAlbums();
   return { props: { albums } };
 }
 
-
-export default function Gallery({albums}) {
+export default function Gallery({ albums }) {
   const users = [
     {
       id: 1,
