@@ -5,53 +5,7 @@ import VelTechNavbar from "@/app/components/navbar";
 import { useEffect, useState } from "react";
 
 export default function Gallery() {
-  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  const [albumCards, setAlbumCards] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch("/api/landing");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setAlbumCards(data);
-      } catch (error) {
-        setError(error.message);
-      }
-      setIsLoading(false);
-    };
-
-    fetchData();
-  }, []);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!albumCards) {
-    return null;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!albumCards) {
-    return null;
-  }
-  const users = [
+    const users = [
     {
       id: 1,
       name: "John Doe",
@@ -76,18 +30,57 @@ export default function Gallery() {
       tags: ["music", "artist", "new"],
     },
   ];
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch("/api/landing");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = (await response.json());
+        setData(data);
+      } catch (error) {
+        setError(error.message);
+      }
+      setIsLoading(false);
+    };
+
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!data) {
+    return null;
+  }
+
+  
+
+
   return (
-    <div className="">
+    <div className="bg-beige">
       <div className="fixed top-0 left-0 w-full z-30">
         <VelTechNavbar />
       </div>
       <div className="pt-16">
         <div className="p-8">
-          <TrendingAlbums albums={albumCards.slice(0, 8)} />
-          <LatestUploads albums={albumCards.slice(9, 14)} />
+          <TrendingAlbums albums={data.slice(0, 8)} />
+          <LatestUploads albums={data.slice(9, 14)} />
           <UserSpotlight users={users} />
         </div>
-        <Album cards={albumCards} />
+        <Album albums={data} />
       </div>
 
       <Footer />
@@ -137,7 +130,7 @@ function UserSpotlightCard({ user }) {
     <div className="rounded overflow-hidden shadow-lg">
       <img
         className="w-full h-48 object-cover"
-        src={user.image}
+        src={"https://source.unsplash.com/random/?user"}
         alt={user.name}
       />
       <div className="px-6 py-4">
