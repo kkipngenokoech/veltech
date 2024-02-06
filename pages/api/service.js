@@ -27,6 +27,7 @@ export async function fetchAlbums(userId) {
 
   const enhancedAlbums = albums.map((album) => ({
     ...album,
+    coverImage: `https://source.unsplash.com/random/?nature,cities,beaches,landscape,wallpapers,${album.id}`,
     description: getRandomDescription(),
     dateUploaded: getRandomDate(),
     country: getRandomCountry(),
@@ -62,7 +63,7 @@ function fetchPhotos(albumId) {
       return photos.map((photo, index) => ({
         ...photo,
         description: getRandomDescription(),
-    rating: Math.floor(Math.random() * 5),
+    rating: Math.floor(Math.random() * 4) + 1,
     reviews: Math.floor(Math.random() * 100000),
         coverImage: `https://source.unsplash.com/random/?nature,landscape,${index}`,
         dateUploaded: getRandomDate(),
