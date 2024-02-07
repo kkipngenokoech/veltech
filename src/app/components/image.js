@@ -138,9 +138,9 @@ export default function ImageModal({ open, setOpen, image, wanderer }) {
                           variant="contained"
                           onClick={handleClickOpen}
                           style={{
-                            display: "block", // This makes the button a block element
-                            margin: "0 auto", // This centers the button
-                            padding: "10px", // This adds padding to the button
+                            display: "block", 
+                            margin: "0 auto", 
+                            padding: "10px", 
                           }}
                         >
                           Edit Image Title
