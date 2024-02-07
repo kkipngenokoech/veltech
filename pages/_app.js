@@ -4,6 +4,7 @@ import "../src/app/globals.css";
 // https://firebase.google.com/docs/web/setup#available-libraries - more services can be added here
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { useState } from "react";
 // TODO: Add SDKs for Firebase products that you want to use
 const firebaseConfig = {
   apiKey: "AIzaSyBeUvq8TvdOe5P0prnEl01HV7qDM0hovX4",
