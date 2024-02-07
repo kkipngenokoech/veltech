@@ -13,7 +13,7 @@ const firebaseConfig = {
   storageBucket: "everydayvisa.appspot.com",
   messagingSenderId: "207582029255",
   appId: "1:207582029255:web:c037e77f7719644c14e5e2",
-  measurementId: "G-CT72Z9G9SM"
+  measurementId: "G-CT72Z9G9SM",
 };
 
 // Initialize Firebase

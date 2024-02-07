@@ -2,12 +2,24 @@ import { Fragment, useState } from "react";
 import { Dialog, RadioGroup, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { StarIcon } from "@heroicons/react/20/solid";
+import { Button } from "@mui/material";
+import FormDialog from "./imagetitledialog";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function ImageModal({ open, setOpen, image, wanderer }) {
+  const [title, setTitle] = useState(image.title);
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpenDialog(true);
+  };
+
+  const handleClose = () => {
+    setOpenDialog(false);
+  };
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10 bg-beige" onClose={setOpen}>
@@ -55,7 +67,7 @@ export default function ImageModal({ open, setOpen, image, wanderer }) {
                     </div>
                     <div className="sm:col-span-8 lg:col-span-7">
                       <h2 className="text-2xl font-bold text-gray-900 sm:pr-12">
-                        {image.title}
+                        {title}
                       </h2>
 
                       <section
@@ -122,13 +134,23 @@ export default function ImageModal({ open, setOpen, image, wanderer }) {
                           </h2>
                           <UserProfile wanderer={wanderer} />
                         </div>
-
-                        <button
-                          type="submit"
-                          className="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        <Button
+                          variant="contained"
+                          onClick={handleClickOpen}
+                          style={{
+                            display: "block", 
+                            margin: "0 auto", 
+                            padding: "10px", 
+                          }}
                         >
                           Edit Image Title
-                        </button>
+                        </Button>
+                        <FormDialog
+                          open={openDialog}
+                          handleClose={handleClose}
+                          title={title}
+                          setTitle={setTitle}
+                        />
                       </section>
                     </div>
                   </div>

@@ -6,7 +6,6 @@ export default function SignUp() {
   const router = useRouter();
   // function to handle signup credetials with firebase
   const handleSignUp = async (e) => {
-
     e.preventDefault();
     const username = e.target.username.value;
     const email = e.target.email.value;
@@ -15,14 +14,17 @@ export default function SignUp() {
     console.log(email, password, confirmPassword);
     // sign up with firebase
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
       router.push("/");
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
-  }
+  };
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -38,7 +40,12 @@ export default function SignUp() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST" onSubmit={handleSignUp}>
+          <form
+            className="space-y-6"
+            action="#"
+            method="POST"
+            onSubmit={handleSignUp}
+          >
             <div>
               <label
                 htmlFor="email"

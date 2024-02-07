@@ -44,9 +44,9 @@ export default function LandingPage({ albums }) {
           <VelTechNavbar />
         </div>
 
-        <div className="bg-hero-pattern bg-cover h-screen flex items-center justify-center relative">
+        <div className="lg:bg-hero-pattern bg-cover h-screen flex items-center justify-center relative">
           <div className="flex flex-col md:flex-row items-center">
-            <span className="p-4 text-lg font-bold text-blue-500 w-full md:w-1/3 animate-fade-in-out leading-loose">
+            <span className="p-2 md:p-4 text-lg font-bold text-blue-500 w-full md:w-1/3 animate-fade-in-out leading-loose">
               {heros[index]}
             </span>
             <Button
@@ -58,14 +58,14 @@ export default function LandingPage({ albums }) {
             </Button>
           </div>
         </div>
-        <div className="bg-beige p-8 py-24 sm:py-32 ">
+        <div className="bg-beige p-8 py-8 sm:py-16 ">
           <StatsSection />
-          <AboutUsSection />
-          <FeaturedAlbumsSection albums={albums} />
-          <CallToActionSection />
-          <NewsletterSection />
-          <Footer />
         </div>
+        <AboutUsSection />
+        <FeaturedAlbumsSection albums={albums} />
+        <CallToActionSection />
+        <NewsletterSection />
+        <Footer />
       </>
     </div>
   );
