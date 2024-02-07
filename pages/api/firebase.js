@@ -1,10 +1,11 @@
-// pages/_app.js
-
-import "../src/app/globals.css";
-// https://firebase.google.com/docs/web/setup#available-libraries - more services can be added here
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyBeUvq8TvdOe5P0prnEl01HV7qDM0hovX4",
   authDomain: "everydayvisa.firebaseapp.com",
@@ -17,11 +18,5 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
+const analytics = getAnalytics(app);
 const auth = getAuth(app);
-
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
-}
-
-export default MyApp;
