@@ -11,30 +11,29 @@ export async function getServerSideProps() {
 
 export default function Gallery({ albums }) {
   const users = [
-    {
-      id: 1,
-      name: "John Doe",
-      image: "https://via.placeholder.com/150",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      tags: ["music", "albums", "artist"],
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      image: "https://via.placeholder.com/150",
-      description:
-        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      tags: ["songs", "artist", "popular"],
-    },
-    {
-      id: 3,
-      name: "Bob Johnson",
-      image: "https://via.placeholder.com/150",
-      description:
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      tags: ["music", "artist", "new"],
-    },
-  ];
+  {
+    id: 1,
+    name: "John Doe",
+    image: "https://via.placeholder.com/150",
+    description: "An intrepid explorer of everyday moments, capturing the beauty of life's adventures through the lens of a camera.",
+    tags: ["explorer", "photography", "adventurer"],
+  },
+  {
+    id: 2,
+    name: "Jane Smith",
+    image: "https://via.placeholder.com/150",
+    description: "A visual storyteller weaving tales of discovery and connection. Join me on a journey through the extraordinary in the ordinary.",
+    tags: ["storyteller", "visual", "connection"],
+  },
+  {
+    id: 3,
+    name: "Bob Johnson",
+    image: "https://via.placeholder.com/150",
+    description: "Embarking on a quest to unveil the hidden gems of our world. Through each image, I invite you to see the magic in the mundane.",
+    tags: ["explorer", "discovery", "magic"],
+  },
+];
+
 
   return (
     <div className="bg-beige">
