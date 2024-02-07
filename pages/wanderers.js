@@ -13,35 +13,35 @@ export async function getServerSideProps() {
 export default function Wanderers({ users }) {
   useRequireAuth();
   const testimonials = [
-  {
-    id: 1,
-    text: "EverydayVisa has revolutionized the way I share my everyday moments with loved ones. It's intuitive, fun, and a must-have for anyone who wants to cherish memories.",
-    name: "Sarah Johnson",
-    position: "Family Storyteller",
-    image: "https://source.unsplash.com/random/150x150/?portrait",
-  },
-  {
-    id: 2,
-    text: "Using EverydayVisa has been a game-changer for me. It's like having a visual diary of my life's adventures. Highly recommended for anyone who loves capturing moments.",
-    name: "David Lee",
-    position: "Adventure Seeker",
-    image: "https://source.unsplash.com/random/150x150/?portrait",
-  },
-  {
-    id: 3,
-    text: "As a photography enthusiast, EverydayVisa has become my go-to platform for sharing my passion with a like-minded community. It's easy to use and offers a seamless experience.",
-    name: "Emily Smith",
-    position: "Photography Enthusiast",
-    image: "https://source.unsplash.com/random/150x150/?portrait",
-  },
-  {
-    id: 4,
-    text: "I've been using EverydayVisa for a while now, and I'm impressed by its reliability and user-friendly interface. It's a fantastic way to turn everyday moments into lasting memories.",
-    name: "Michael Brown",
-    position: "Loyal User",
-    image: "https://source.unsplash.com/random/150x150/?portrait",
-  },
-]
+    {
+      id: 1,
+      text: "EverydayVisa has revolutionized the way I share my everyday moments with loved ones. It's intuitive, fun, and a must-have for anyone who wants to cherish memories.",
+      name: "Sarah Johnson",
+      position: "Family Storyteller",
+      image: "https://source.unsplash.com/random/150x150/?portrait",
+    },
+    {
+      id: 2,
+      text: "Using EverydayVisa has been a game-changer for me. It's like having a visual diary of my life's adventures. Highly recommended for anyone who loves capturing moments.",
+      name: "David Lee",
+      position: "Adventure Seeker",
+      image: "https://source.unsplash.com/random/150x150/?portrait",
+    },
+    {
+      id: 3,
+      text: "As a photography enthusiast, EverydayVisa has become my go-to platform for sharing my passion with a like-minded community. It's easy to use and offers a seamless experience.",
+      name: "Emily Smith",
+      position: "Photography Enthusiast",
+      image: "https://source.unsplash.com/random/150x150/?portrait",
+    },
+    {
+      id: 4,
+      text: "I've been using EverydayVisa for a while now, and I'm impressed by its reliability and user-friendly interface. It's a fantastic way to turn everyday moments into lasting memories.",
+      name: "Michael Brown",
+      position: "Loyal User",
+      image: "https://source.unsplash.com/random/150x150/?portrait",
+    },
+  ];
 
   return (
     <div className="pt-16">

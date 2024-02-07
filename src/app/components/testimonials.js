@@ -11,9 +11,7 @@ export default function Testimonials({ testimonial }) {
         />
         <figure className="mt-10">
           <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
-            <p>
-              {testimonial.text}
-            </p>
+            <p>{testimonial.text}</p>
           </blockquote>
           <figcaption className="mt-10">
             <img
@@ -22,7 +20,9 @@ export default function Testimonials({ testimonial }) {
               alt=""
             />
             <div className="mt-4 flex items-center justify-center space-x-3 text-base">
-              <div className="font-semibold text-gray-900">{testimonial.name}</div>
+              <div className="font-semibold text-gray-900">
+                {testimonial.name}
+              </div>
               <svg
                 viewBox="0 0 2 2"
                 width={3}

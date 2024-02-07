@@ -60,7 +60,7 @@ what to serve from backend:
      - clone the repo
      - cd into the repo
      - npm install (to install dependecies)
-     - npm run start (visit [local host](http://localhost:3000/) browser)
+     - npm run dev (visit [local host](http://localhost:3000/) browser)
 3. the code should have production and development environments
    - production branches - main
    - development branches - production

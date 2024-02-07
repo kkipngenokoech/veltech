@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export const useRequireAuth = (avoidRedirect = false) => {
   const [user, setUser] = useState(null);
@@ -25,5 +25,5 @@ export const useRequireAuth = (avoidRedirect = false) => {
 };
 
 export const handleNotAuthenticated = (router) => {
-  router.push('/auth?authType=signin');
+  router.push("/auth?authType=signin");
 };

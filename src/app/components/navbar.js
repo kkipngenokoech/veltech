@@ -17,16 +17,16 @@ export default function VelTechNavbar() {
   const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleSignout = async () => { 
-     const auth = getAuth();
-  try {
-    await signOut(auth);
-    // After signing out, redirect to the home page
-    router.push('/');
-  } catch (error) {
-    console.error('Error signing out', error);
-  }
-}
+  const handleSignout = async () => {
+    const auth = getAuth();
+    try {
+      await signOut(auth);
+      // After signing out, redirect to the home page
+      router.push("/");
+    } catch (error) {
+      console.error("Error signing out", error);
+    }
+  };
 
   return (
     <header className="absolute inset-x-0 top-0 z-50 bg-beige">
@@ -77,7 +77,6 @@ export default function VelTechNavbar() {
               Get Started
             </Link>
           )}
-          
         </div>{" "}
       </nav>
       <Dialog
@@ -118,14 +117,13 @@ export default function VelTechNavbar() {
               {user ? (
                 <div>
                   <button
-                   onClick={handleSignout}
+                    onClick={handleSignout}
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Sign Out
                   </button>
-              </div>
-              ): (
-                
+                </div>
+              ) : (
                 <div className="py-6">
                   <a
                     href="/auth?authType=signin"
