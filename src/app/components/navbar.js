@@ -13,7 +13,7 @@ const navigation = [
 ];
 
 export default function VelTechNavbar() {
-  const user = useRequireAuth();
+  const user = useRequireAuth(true);
   const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 

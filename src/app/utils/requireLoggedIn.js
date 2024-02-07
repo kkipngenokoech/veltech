@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
-export const useRequireAuth = () => {
+export const useRequireAuth = (avoidRedirect = false) => {
   const [user, setUser] = useState(null);
   const router = useRouter();
 
@@ -12,14 +12,14 @@ export const useRequireAuth = () => {
       if (firebaseUser) {
         // User is authenticated
         setUser(firebaseUser);
-      } else {
-        // User is not authenticated
+      } else if (!avoidRedirect) {
+        // User is not authenticated and should be redirected
         handleNotAuthenticated(router);
       }
     });
 
     return () => unsubscribe();
-  }, [router]);
+  }, [router, avoidRedirect]);
 
   return user; // Return the user object
 };
