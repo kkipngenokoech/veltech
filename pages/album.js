@@ -2,6 +2,7 @@ import Footer from "@/app/components/footer";
 import ImageCard from "@/app/components/imagecard";
 import VelTechNavbar from "@/app/components/navbar";
 import { fetchAlbum } from "./api/service";
+import { useRequireAuth } from "@/app/utils/requireLoggedIn";
 
 export async function getServerSideProps(context) {
   const { albumid } = context.query;
@@ -10,6 +11,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function individualAlbum({ album }) {
+  useRequireAuth();
   const features = [
     { name: "Creator", description: `${album.wanderer.username}` },
     {

@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { useRequireAuth } from "../utils/requireLoggedIn";
+import { getAuth, signOut } from "firebase/auth";
+import { useRouter } from "next/router";
 
 const navigation = [
   { name: "Wanderers", href: "/wanderers" },
@@ -10,7 +13,20 @@ const navigation = [
 ];
 
 export default function VelTechNavbar() {
+  const user = useRequireAuth(true);
+  const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleSignout = async () => { 
+     const auth = getAuth();
+  try {
+    await signOut(auth);
+    // After signing out, redirect to the home page
+    router.push('/');
+  } catch (error) {
+    console.error('Error signing out', error);
+  }
+}
 
   return (
     <header className="absolute inset-x-0 top-0 z-50 bg-beige">
@@ -46,12 +62,22 @@ export default function VelTechNavbar() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link
-            href="/auth"
-            className="text-sm font-semibold leading-6 text-gray-900 border border-blue-500 hover:border-blue-700 py-2 px-4 rounded-lg"
-          >
-            Get Started
-          </Link>
+          {user ? (
+            <button
+              onClick={handleSignout}
+              className="text-sm font-semibold leading-6 text-gray-900 border border-blue-500 hover:border-blue-700 py-2 px-4 rounded-lg"
+            >
+              Sign Out
+            </button>
+          ) : (
+            <Link
+              href="/auth"
+              className="text-sm font-semibold leading-6 text-gray-900 border border-blue-500 hover:border-blue-700 py-2 px-4 rounded-lg"
+            >
+              Get Started
+            </Link>
+          )}
+          
         </div>{" "}
       </nav>
       <Dialog
@@ -89,14 +115,26 @@ export default function VelTechNavbar() {
                   </a>
                 ))}
               </div>
-              <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Get Started
-                </a>
+              {user ? (
+                <div>
+                  <a
+                    href="#"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    Sign Out
+                  </a>
               </div>
+              ): (
+                
+                <div className="py-6">
+                  <a
+                    href="#"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    Get Started
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </Dialog.Panel>

@@ -3,6 +3,7 @@ import VelTechNavbar from "@/app/components/navbar";
 import Testimonials from "@/app/components/testimonials";
 import { fetchWanderers } from "./api/service";
 import WandererCard from "@/app/components/wanderer";
+import { useRequireAuth } from "@/app/utils/requireLoggedIn";
 
 export async function getServerSideProps() {
   const users = await fetchWanderers();
@@ -10,6 +11,7 @@ export async function getServerSideProps() {
 }
 
 export default function Wanderers({ users }) {
+  useRequireAuth();
   const testimonials = [
     {
       id: 1,
