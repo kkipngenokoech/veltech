@@ -1,8 +1,9 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
+import { useRouter } from "next/router";
 const auth = getAuth()
 
 export default function SignIn() {
-
+  const router = useRouter();
   // function to handle password and email
   const handleSignIn = async (e) => {
     console.log("we are getting her");
@@ -14,7 +15,7 @@ export default function SignIn() {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user
-      console.log(user);
+      router.push("/");
     } catch (error) {
       console.log(error);
     }
